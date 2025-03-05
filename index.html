@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片标注工具</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">图片标签</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>图片标注工具</h1>
+        <p class="subtitle">轻松上传、标注和下载图片</p>
+        
+        <div class="section-card upload-section">
+            <h2><span class="emoji">📤</span>上传图片</h2>
+            <p>最多可选择50张图片上传</p>
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="fileInput" accept="image/*" multiple>
+                <label for="fileInput" class="upload-button">选择文件</label>
+                <div class="upload-info">
+                    已选择 <span id="fileCount">0</span> 个文件
+                </div>
+            </div>
+            <button id="uploadButton" class="primary-button">上传图片</button>
+        </div>
+
+        <div class="section-card gallery-section">
+            <h2><span class="emoji">🖼️</span>图片库</h2>
+            <div class="gallery-controls">
+                <button id="downloadAllButton" class="secondary-button" disabled>下载全部 (ZIP)</button>
+                <span id="imageCount">0 张图片</span>
+            </div>
+            <div id="imageGallery" class="image-gallery"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>为图片整理而用 ❤️ 制作</p>
+        </div>
+    </footer>
+
+    <!-- Templates -->
+    <template id="imageCardTemplate">
+        <div class="image-card">
+            <div class="image-container">
+                <img src="" alt="上传的图片">
+            </div>
+            <div class="image-controls">
+                <textarea class="image-annotation" placeholder="在此添加注释..."></textarea>
+                <div class="button-group">
+                    <button class="delete-button">删除</button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Modal for download options -->
+    <div id="downloadModal" class="modal">
+        <div class="modal-content">
+            <h2>下载选项</h2>
+            <div class="form-group">
+                <label for="uniformNaming">
+                    <input type="checkbox" id="uniformNaming">
+                    使用统一命名方式
+                </label>
+            </div>
+            <div class="form-group uniform-name-group hidden">
+                <label for="baseFileName">基本文件名：</label>
+                <input type="text" id="baseFileName" value="图片">
+            </div>
+            <div class="button-group">
+                <button id="cancelDownload" class="secondary-button">取消</button>
+                <button id="confirmDownload" class="primary-button">下载</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
